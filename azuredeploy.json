@@ -1,0 +1,19 @@
+{
+    "$schema":
+    "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemp
+    late.json#",
+    "contentVersion": "1.0.0.0", "resources": [
+    {
+    "type": "Microsoft.Storage/storageAccounts", "apiVersion": "2024-
+    09-01",
+    "name": "c2079617Storage", "location": "UK South",
+"sku": {
+"name": "Standard_LRS"
+},
+"kind": "StorageV2", "properties": {
+"supportsHttpsTrafficOnly": true
+}
+}
+]
+}
+
