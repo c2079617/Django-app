@@ -12,3 +12,5 @@ def contact(request):
 
 def report(request):
     return render(request, 'itreporting/report.html')
+
+
