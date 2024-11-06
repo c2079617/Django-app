@@ -10,7 +10,10 @@ def about(request):
 def contact(request):
     return render(request, 'itreporting/contact.html')
 
+def reportus(request):
+    return render(request, 'itreporting/reportus.html')
+from .models import Issue
 def report(request):
-    return render(request, 'itreporting/report.html')
-
+    daily_report = {'issues': Issue.objects.all(), 'title': 'Issues Reported'}
+    return render(request, 'itreporting/report.html', daily_report)
 

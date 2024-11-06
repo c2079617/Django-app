@@ -8,7 +8,8 @@ urlpatterns = [
     path('', views.home, name='home'),                  # Refers to the itreporting home view
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
-    path('report/', views.report, name='report'),
+    path('reportus/', views.reportus, name='reportus'),
     path('register/', users_views.register, name='register'),  # Refers to the users register view
     path('profile/', users_views.profile, name='profile'),  # Refers to the users profile view
+    path('report/', views.report, name='report')
 ]
