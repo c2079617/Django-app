@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from .models import Issue  # Correct import here
+from .models import Issue 
 
 def home(request):
     return render(request, 'itreporting/home.html')
@@ -25,8 +25,12 @@ class PostListView(ListView):
     ordering = ['-date_submitted']
     template_name = 'itreporting/report.html'
     context_object_name = 'issues'
-    paginate_by = 10  # Optional pagination
+    paginate_by = 10  
 
 class PostDetailView(DetailView):
     model = Issue
     template_name = 'itreporting/issue_detail.html'
+
+class PostCreateView(CreateView):
+    model = Issue
+    fields = ['type', 'room', 'urgent', 'details']

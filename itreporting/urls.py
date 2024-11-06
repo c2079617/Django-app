@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views  # Import views from the current app (itreporting)
 from users import views as users_views  # Import views from users app with alias
-from .views import PostListView, PostDetailView
+from .views import PostListView, PostDetailView, PostCreateView
 
 app_name = 'itreporting'
 
@@ -14,4 +14,5 @@ urlpatterns = [
     path('profile/', users_views.profile, name='profile'),  # Refers to the users profile view
     path('report/', PostListView.as_view(), name = 'report'),
     path('issues/<int:pk>', PostDetailView.as_view(), name = 'issue-detail'),
+    path('issue/new', PostCreateView.as_view(), name = 'issue-create'),
 ]
