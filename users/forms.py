@@ -6,17 +6,16 @@ from .models import Profile
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField(label='Email address', help_text='Your SHU email address.')
-
-class Meta:
-    model = User
-    fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
+    class Meta:
+        model = User
+        fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
 
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
 
-class Meta:
-    model = User
-    fields = ['first_name', 'last_name', 'email']
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email']
 
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
