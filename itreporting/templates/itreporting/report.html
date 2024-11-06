@@ -1,22 +1,23 @@
 {% extends "itreporting/base.html" %}
 {% block content %}
-    <h1>Issues Reported</h1>
-    {% if issues %}
-        {% for issue in issues %}
-            <article class="media content-section">
-                <div class="media-body">
-                    <div class="article-metadata">
-                        <a class="mr-2" href="#">{{ issue.author.username }}</a>
-                        <small class="text-muted">{{ issue.date_submitted }}</small>
-                    </div>
-                    <h2>{{ issue.type }} Issue in {{ issue.room }}</h2>
-                    <p><strong>Urgent:</strong> {{ issue.urgent|yesno:"Yes,No" }}</p>
-                    <p>{{ issue.details }}</p>
-                    <p><strong>Description:</strong> {{ issue.description }}</p>
+
+<h1>Issues Reported</h1>
+
+{% if issues %}
+    {% for issue in issues %}
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="#">{{ issue.author.username }}</a>
+                    <small class="text-muted">{{ issue.date_submitted }}</small>
                 </div>
-            </article>
-        {% endfor %}
-    {% else %}
-        <p>No issues have been reported yet.</p>
-    {% endif %}
+                <h2><a class="article-title" href="#">{{ issue }}</a></h2>
+                <p class="article-content">{{ issue.details }}</p>
+            </div>
+        </article>
+    {% endfor %}
+{% else %}
+    <p>No issues reported.</p>
+{% endif %}
+
 {% endblock %}
