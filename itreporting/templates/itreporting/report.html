@@ -4,6 +4,11 @@
 {% if issues %}
 {% for issue in issues %}
 <article class="media content-section">
+    {% if issue.author.profile.image %}
+        <img class="rounded-circle article-img" src="{{ issue.author.profile.image.url }}"/>
+    {% else %}
+        <img class="rounded-circle article-img" src="/media/profile_pics/default.png"/>
+    {% endif %}
     <div class="media-body">
         <div class="article-metadata">
             <a class="mr-2" href="#">{{ issue.author.username }}</a>
