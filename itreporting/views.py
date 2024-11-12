@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .models import Issue 
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def home(request):
     return render(request, 'itreporting/home.html')
@@ -34,3 +35,7 @@ class PostDetailView(DetailView):
 class PostCreateView(CreateView):
     model = Issue
     fields = ['type', 'room', 'urgent', 'details']
+    
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
