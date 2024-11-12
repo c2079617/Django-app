@@ -3,7 +3,8 @@ from django.http import HttpResponse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .models import Issue 
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic.edit import DeleteView
 
 def home(request):
     return render(request, 'itreporting/home.html')
@@ -37,6 +38,30 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     fields = ['type', 'room', 'urgent', 'details']
     
     def form_valid(self, form):
-        
+
         form.instance.author = self.request.user
         return super().form_valid(form)
+    
+class PostUpdateView(LoginRequiredMixin, UpdateView):
+    model = Issue
+    fields = ['type', 'room', 'details']
+    
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Issue
+    fields = ['type', 'room', 'details']
+    
+    def test_func(self):
+        issue = self.get_object()
+        return self.request.user == issue.author
+
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Issue
+    success_url = '/report'
+
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Issue
+    success_url = '/report'
+    
+    def test_func(self):
+        issue = self.get_object()
+        return self.request.user == issue.author
