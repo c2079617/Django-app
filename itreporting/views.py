@@ -32,10 +32,11 @@ class PostDetailView(DetailView):
     model = Issue
     template_name = 'itreporting/issue_detail.html'
 
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView):
     model = Issue
     fields = ['type', 'room', 'urgent', 'details']
     
     def form_valid(self, form):
+        
         form.instance.author = self.request.user
         return super().form_valid(form)
