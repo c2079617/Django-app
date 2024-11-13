@@ -79,8 +79,12 @@ WSGI_APPLICATION = 'itapps.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'djangodb',  # Your database name
+        'USER': 'root',       # Your MySQL username
+        'PASSWORD': 'Raceway4*',  # Your MySQL password
+        'HOST': 'localhost',  # MySQL host (localhost if running locally)
+        'PORT': '3306',       # Default MySQL port
     }
 }
 
