@@ -67,3 +67,9 @@ fi
 if [ -n "${BASH:-}" -o -n "${ZSH_VERSION:-}" ] ; then
     hash -r 2> /dev/null
 fi
+
+export AZURE_DB_NAME='development'
+export AZURE_DB_HOST='c2079617.mysql.database.azure.com'
+export AZURE_DB_PORT='3306'
+export AZURE_DB_USER='c2079617'
+export AZURE_DB_PASSWORD='Raceway4*'

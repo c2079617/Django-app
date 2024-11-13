@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -78,16 +79,15 @@ WSGI_APPLICATION = 'itapps.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'djangodb',  # Your database name
-        'USER': 'root',       # Your MySQL username
-        'PASSWORD': 'Raceway4*',  # Your MySQL password
-        'HOST': 'localhost',  # MySQL host (localhost if running locally)
-        'PORT': '3306',       # Default MySQL port
-    }
+'default': {
+'ENGINE': 'django.db.backends.mysql',
+'NAME': os.environ['AZURE_DB_NAME'],
+'HOST': os.environ['AZURE_DB_HOST'],
+'PORT': os.environ['AZURE_DB_PORT'],
+'USER': os.environ['AZURE_DB_USER'],
+'PASSWORD': os.environ['AZURE_DB_PASSWORD'],
 }
-
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
