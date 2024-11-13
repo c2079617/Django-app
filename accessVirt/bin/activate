@@ -73,3 +73,6 @@ export AZURE_DB_HOST='c2079617.mysql.database.azure.com'
 export AZURE_DB_PORT='3306'
 export AZURE_DB_USER='c2079617'
 export AZURE_DB_PASSWORD='Raceway4*'
+
+export AZURE_SA_NAME="dangobase1"
+export AZURE_SA_KEY="rfpvK4gxOdOL0DkSljsp7MAsMSYyz0tYAg0MBOWWJbkTnq1RFQ61JQfXh2zD60oF4p3d+vGadJlU+ASt8v+/PA=="
