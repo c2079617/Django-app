@@ -27,7 +27,7 @@ class PostListView(ListView):
     ordering = ['-date_submitted']
     template_name = 'itreporting/report.html'
     context_object_name = 'issues'
-    paginate_by = 10  
+    paginate_by = 4  
 
 class PostDetailView(DetailView):
     model = Issue
@@ -61,7 +61,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Issue
     success_url = '/report'
-    
+
     def test_func(self):
         issue = self.get_object()
         return self.request.user == issue.author
