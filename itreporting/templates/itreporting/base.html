@@ -54,8 +54,19 @@
 
                         <ul class="navbar-nav ml-auto">
                             {% if user.is_authenticated %}
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                                <li class="nav-item d-flex align-items-center">
+                                    <a class="nav-link d-flex align-items-center" href="{% url 'profile' %}">
+                                        <!-- Profile Picture -->
+                                        {% if user.profile.image %}
+                                            <img src="{{ user.profile.image.url }}" alt="Profile Picture" 
+                                                 class="rounded-circle" width="30" height="30" style="object-fit: cover;">
+                                        {% else %}
+                                            <img src="{% static 'default/profile.png' %}" alt="Default Profile Picture" 
+                                                 class="rounded-circle" width="30" height="30" style="object-fit: cover;">
+                                        {% endif %}
+                                        <!-- Username -->
+                                        <span class="ml-2">{{ user.username }}</span>
+                                    </a>
                                 </li>
                                 <form method="post" action="{% url 'logout' %}" style="display:inline;">
                                     {% csrf_token %}
@@ -119,7 +130,6 @@
     </footer>
 
     <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" 
             crossorigin="anonymous"></script>
