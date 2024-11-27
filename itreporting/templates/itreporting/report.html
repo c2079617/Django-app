@@ -1,43 +1,89 @@
 {% extends "itreporting/base.html" %}
 {% block content %}
-<h1>Issues Reported</h1>
-{% if issues %}
-{% for issue in issues %}
-<article class="media content-section">
-    {% if issue.author.profile.image %}
-        <img class="rounded-circle article-img" src="{{ issue.author.profile.image.url }}"/>
-    {% else %}
-        <img class="rounded-circle article-img" src="/media/profile_pics/default.png"/>
-    {% endif %}
-    <div class="media-body">
-        <div class="article-metadata">
-            <a class="mr-2" href="#">{{ issue.author.username }}</a>
-            <small class="text-muted">{{ issue.date_submitted }}</small>
-        </div>
-        <h2><a class="article-title" href="{% url 'itreporting:issue-detail' issue.id %}">{{ issue }}</a></h2>
-        <p class="article-content">{{ issue.details }}</p>
-    </div>
-</article>
-{% endfor %}
+<title>Issues Reported</title>
 
-{% if is_paginated %}
-{% if page_obj.has_previous %}
-    <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
-    <a class="btn btn-outline-info mb-4" href="?page={{page_obj.previous_page_number}}">Previous</a>
-{% endif %}
-{% for num in page_obj.paginator.page_range %}
-{% if page_obj.number == num %}
-<a class="btn btn-info mb-4" href="?page={{num}}">{{num}}</a>
-{% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-<a class="btn btn-outline-info mb-4" href="?page={{num}}">{{num}}</a>
-{% endif %}
-{% endfor %}
-{% if page_obj.has_next %}
-<a class="btn btn-outline-info mb-4" href="?page={{page_obj.next_page_number}}">Next</a>
-<a class="btn btn-outline-info mb-4" href="?page={{page_obj.paginator.num_pages}}">Last</a>
-{% endif %}
-{% else %}
-<p>No issues reported.</p>
-{% endif %}
-{% endif %}
+<div class="container mt-5">
+    <h1 class="text-dark mb-4">Issues Reported</h1>
+
+    {% if issues %}
+        {% for issue in issues %}
+            <div class="border rounded p-4 mb-4 bg-white shadow-sm">
+                <!-- Issue Metadata -->
+                <div class="mb-3">
+                    <h2 class="text-dark mb-2">
+                        <a href="{% url 'itreporting:issue-detail' issue.id %}" class="text-decoration-none text-dark">
+                            {{ issue.type }} Issue in Room {{ issue.room }}
+                        </a>
+                    </h2>
+                    <p class="mb-1">
+                        <strong>Submitted By:</strong> {{ issue.author.username }}
+                    </p>
+                    <p class="mb-1">
+                        <strong>Date Submitted:</strong> {{ issue.date_submitted|date:"F j, Y, g:i a" }}
+                    </p>
+                    <p>
+                        <strong>Status:</strong> 
+                        {% if issue.urgent %}
+                            <span class="text-danger fw-bold">Urgent</span>
+                        {% else %}
+                            <span class="text-success fw-bold">Not Urgent</span>
+                        {% endif %}
+                    </p>
+                </div>
+
+                <!-- Issue Description -->
+                <div class="mb-4">
+                    <h5 class="text-secondary">Details</h5>
+                    <p>{{ issue.details|truncatewords:50 }}</p>
+                </div>
+
+                <!-- Action Button -->
+                <div>
+                    <a href="{% url 'itreporting:issue-detail' issue.id %}" class="btn btn-primary">
+                        View Details
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+
+        <!-- Pagination -->
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1" aria-label="First">First</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">Previous</a>
+                    </li>
+                {% endif %}
+
+                {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                        <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">Next</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Last">Last</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+
+    {% else %}
+        <div class="alert alert-warning text-center">
+            No issues reported.
+        </div>
+    {% endif %}
+</div>
+
 {% endblock %}

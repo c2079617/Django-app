@@ -1,84 +1,165 @@
-body {
-    background: #fafafa;
-    color: #333333;
-    margin-top: 5rem;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    color: #444444;
-}
-
-ul {
+/* General Body Styling */
+html, body {
+    height: 100%;
     margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
 }
 
-.bg-steel {
-    background-color: #5f788a;
+body {
+    background-color: #f4f7fc;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-.site-header .navbar-nav .nav-link {
-    color: #cbd5db;
+.site-header {
+    background-color: #343a40;
+    padding: 15px 0;
 }
 
-.site-header .navbar-nav .nav-link:hover {
-    color: #ffffff;
+.navbar {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease-in-out;
 }
 
-.site-header .navbar-nav .nav-link.active {
-    font-weight: 500;
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.nav-link {
+    color: #dcdcdc !important;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #ffffff !important;
 }
 
 .content-section {
-    background: #ffffff;
-    padding: 10px 20px;
-    border: 1px solid #dddddd;
-    border-radius: 3px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
 
-.article-title {
-    color: #444444;
+.content-section h3 {
+    font-weight: 600;
+    color: #495057;
 }
 
-a.article-title:hover {
-    color: #428bca;
+.list-group-item-light {
+    border-color: #f8f9fa;
+    color: #495057;
+    transition: background-color 0.2s ease;
+}
+
+.list-group-item-light:hover {
+    background-color: #f1f1f1;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #343a40;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 14px;
+    margin-top: auto; /* Push footer to the bottom */
+}
+
+/* Adjustments for Responsiveness */
+.container-fluid {
+    flex: 1;
+    padding-top: 70px; /* Ensure there's no overlap with the fixed navbar */
+}
+
+/* Card or Box Shadow for Content */
+.card, .content-section {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Form Inputs, Buttons, and Other Interactive Elements */
+input, button {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Adjusting Lists and Links for Better Visual */
+ul.list-group {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+ul.list-group a {
     text-decoration: none;
+    color: inherit;
+    font-weight: 500;
 }
 
-.article-content {
-    white-space: pre-line;
+ul.list-group-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    transition: background-color 0.2s ease;
 }
 
-.article-img {
-    height: 65px;
-    width: 65px;
-    margin-right: 16px;
+ul.list-group-item:hover {
+    background-color: #e9ecef;
 }
 
-.article-metadata {
-    padding-bottom: 1px;
-    margin-bottom: 4px;
-    border-bottom: 1px solid #e3e3e3;
+.alert-dismissible .close {
+    color: #000;
 }
 
-.article-svg {
-    width: 25px;
-    height: 25px;
-    vertical-align: middle;
+/* Typography Enhancements */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    color: #343a40;
 }
 
-.account-img {
-    height: 125px;
-    width: 125px;
-    margin-right: 20px;
-    margin-bottom: 16px;
+p, ul, li {
+    font-weight: 400;
+    color: #495057;
 }
 
-.account-heading {
-    font-size: 2.5rem;
+.text-muted {
+    color: #6c757d;
 }
 
-.article-metadata a:hover {
-    color: #333;
-    text-decoration: none;
+.text-center {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.6rem;
+    }
+
+    .content-section {
+        padding: 15px;
+    }
+
+    .footer {
+        font-size: 12px;
+    }
+
+    .list-group-item-light {
+        font-size: 0.9rem;
+    }
 }

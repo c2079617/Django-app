@@ -1,8 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from .models import Issue 
+from .models import Issue
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import DeleteView
 
@@ -15,8 +14,8 @@ def about(request):
 def contact(request):
     return render(request, 'itreporting/contact.html')
 
-def reportus(request):
-    return render(request, 'itreporting/reportus.html')
+def assignment_features(request):
+    return render(request, 'itreporting/assignment_features.html')
 
 def report(request):
     daily_report = {'issues': Issue.objects.all(), 'title': 'Issues Reported'}

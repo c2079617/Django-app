@@ -2,19 +2,30 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<title>Report IT Issue</title>
 
-<div class="content-section">
-    <form method="POST">
-        {% csrf_token %}
-        <fieldset class="form-group">
-            <legend class="borer-bottom mb-4">Report IT Issue </legend>
-            {{ form|crispy }}
-        </fieldset>
-        <div class="form-group">
-            <button class="btn btn-outline-info"type="submit">Submit</button>
+<div class="container mt-5">
+    <h1 class="text-dark mb-4">Report an IT Issue</h1>
+
+    <div class="border rounded p-4 bg-white shadow-sm">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="mb-4 text-secondary">Issue Details</legend>
+                {{ form|crispy }}
+            </fieldset>
+
+            <div class="form-group">
+                <button class="btn btn-primary mt-3" type="submit">Submit Issue</button>
+            </div>
+        </form>
+
+        <div class="border-top pt-3 mt-4">
+            <small class="text-muted">
+                You need an account to submit an issue.
+                <a class="ml-2" href="{% url 'login' %}">Login</a>
+            </small>
         </div>
-    </form>
-        <div class="border-top pt-3"><small class="text-muted">You need an account to submit an issue <a class="ml-2" href="#">Login</a></small>
     </div>
 </div>
-{% endblock content %}
+{% endblock %}
