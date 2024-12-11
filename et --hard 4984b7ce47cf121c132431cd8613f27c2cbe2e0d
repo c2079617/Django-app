@@ -1,0 +1,186 @@
+[33mcommit 4984b7ce47cf121c132431cd8613f27c2cbe2e0d[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Dec 11 14:56:05 2024 +0000
+
+    update
+
+[33mcommit a4fdb1b0a8dee04bb639c0625af11659e0def374[m
+Merge: 8e92a41 93eb903
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Dec 11 14:51:14 2024 +0000
+
+    update
+
+[33mcommit 93eb903b4a7cee864feea100c5d69919d321669a[m[33m ([m[1;32mWeatherAPI[m[33m)[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Dec 11 14:45:24 2024 +0000
+
+    Implimented WeatherAPI
+
+[33mcommit 59e27691989e77503313ef0009ae9f2929bb1078[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Dec 11 14:31:12 2024 +0000
+
+    Implimented WeatherAPI
+
+[33mcommit 8e92a41cdd3ea4c12e8cfae8928a06d549380fcf[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Dec 11 14:20:56 2024 +0000
+
+    Add or update the Azure App Service build and deployment workflow config
+
+[33mcommit f123c07193ea0cabe323677de39b386e36a6a17d[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Dec 11 14:20:18 2024 +0000
+
+    Remove the Azure App Service build and deployment workflow config
+
+[33mcommit 429ecbcd856837e88b2326002c4ea0eaf54a8535[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Dec 11 14:10:43 2024 +0000
+
+    Add or update the Azure App Service build and deployment workflow config
+
+[33mcommit 633f6a2ca408ea51300cdc0f0900c3dbc247acbb[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Nov 20 17:02:42 2024 +0000
+
+    database debug v2
+
+[33mcommit b417a12e2e36c562564e5cc04f04e67e3dbbf1b3[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Nov 20 16:48:12 2024 +0000
+
+    database update
+
+[33mcommit 62128b8231443aa950bb82bdb973fee55bf89327[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Nov 20 16:24:40 2024 +0000
+
+    Add or update the Azure App Service build and deployment workflow config
+
+[33mcommit f2d8ef0c9b8afb3d14652fc87b19317f404edd41[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Nov 20 16:21:51 2024 +0000
+
+    Improved formatting of settings.py
+
+[33mcommit cef60a672919ac208def961abae3074ed28e6cd3[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Nov 20 15:44:16 2024 +0000
+
+    Add or update the Azure App Service build and deployment workflow config
+
+[33mcommit 704e788ac9fd68adab70ed949c174a155c9fb8b8[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Nov 20 15:42:28 2024 +0000
+
+    Add or update the Azure App Service build and deployment workflow config
+
+[33mcommit c1b7c3164a87d43e70b4deaa6b22df1bf3c668fe[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Nov 20 15:39:52 2024 +0000
+
+    Configured Azure App Service settings and updated settings.py for deployment v2
+
+[33mcommit 1524c91dc31790b3d664b3e3be7c69577f1bf1f4[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Nov 20 14:53:27 2024 +0000
+
+    Configured Azure App Service settings and updated settings.py for deployment
+
+[33mcommit 06167e29f49f022495513d4ebb382becf2096566[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Nov 13 16:53:58 2024 +0000
+
+    Configured Azure Blob Storage for static and media files
+
+[33mcommit 2a7c71c6dcaacdf647751578030d7e4198d3008a[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Nov 20 15:21:22 2024 +0000
+
+    Add or update the Azure App Service build and deployment workflow config
+
+[33mcommit 43c198d60bc178953b35074880685e41fd73b028[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Nov 13 16:35:34 2024 +0000
+
+    Set up Azure MySQL database integration and configured environment variables for remote deployment
+
+[33mcommit c6fd5dd1791b468c1379f59afb3904b892f63de2[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Nov 13 16:03:59 2024 +0000
+
+    Installed MySQL Database
+
+[33mcommit 49239b499dd471778b20396abfd9bc3c3a2578e8[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Nov 13 00:18:16 2024 +0000
+
+    Implement pagination for reported issues list and improved some code
+
+[33mcommit 439ec7520daa258ae3395ec5f3f3f9619cc7dd95[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Tue Nov 12 23:26:55 2024 +0000
+
+    Add issue update and delete views with user restrictions
+
+[33mcommit 7804091f1bf51ed289b45c55a423e8fcf0edd47d[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Tue Nov 12 23:01:46 2024 +0000
+
+    redirect guest to login
+
+[33mcommit f1eb1d285ac338a66e0fbb47082f96ad9869add5[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Tue Nov 12 22:44:42 2024 +0000
+
+    finalised creating forms new
+
+[33mcommit 66b377238ada19b5088eb304c3ed37c36feb7888[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Nov 6 19:23:40 2024 +0000
+
+    Creating Post Using Forms
+
+[33mcommit adb6ee0a2466913ad23e29c1830408269e865aec[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Nov 6 19:09:11 2024 +0000
+
+    added profile pic to issues
+
+[33mcommit eb1b8eaa93cc137e8a3e69b737cadf8e629b84de[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Nov 6 19:08:18 2024 +0000
+
+    Created Displays for Reports/issues
+
+[33mcommit 01bc42857029fc03f4c47a94fe7eb6d3aee77ff8[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Nov 6 18:48:47 2024 +0000
+
+    Created Report Templates
+
+[33mcommit 39cbc6d47351771afec14cb22ba527ce3c05d8cd[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Nov 6 18:34:07 2024 +0000
+
+    created Basic Report Template and models
+
+[33mcommit 63790ace1503dd59fe14f5a03b222e41f30816cd[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Nov 6 18:12:35 2024 +0000
+
+    Editing and Updating Profile
+
+[33mcommit b20e53d5a10a70696aee89d6c79943424ec2d68f[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Nov 6 16:43:31 2024 +0000
+
+    Profile connect
+
+[33mcommit 1eb811bb7d54b8a99fb6092f1a1e802edbf3e1f0[m
+Author: c2079617 <c2079617@hallam.shu.ac.uk>
+Date:   Wed Nov 6 16:17:19 2024 +0000
+
+    Created Profile signals and default picture
