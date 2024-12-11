@@ -2,4 +2,18 @@
 
 {% block content %}
     <h1>Welcome to the homepage</h1>
+    <p>Explore the latest updates and weather details below.</p>
+{% endblock %}
+
+{% block sidebar %}
+    <div class="content-section">
+        <h3>Current Weathers</h3>
+        <ul class="list-group">
+            {% for weather in weather_data %}
+                <li class="list-group-item list-group-item-light">
+                    {{ weather.city }}: {{ weather.description }}, {{ weather.temperature }}&deg;C
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

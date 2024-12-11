@@ -1,21 +1,46 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>IT Issues Reported</title>
-</head>
-<body>
-    <h1>IT Issues Reported</h1>
+{% extends "itreporting/base.html" %}
+{% block content %}
+<title>IT Issue Details</title>
 
-    <article class="media content-section">
-        <div class="media-body">
-            <div class="article-metadata">
-                <a class="mr-2" href="#">{{ object.author.profile }}</a>
-                <small class="text-muted">{{ object.date_submitted }}</small>
-            </div>
-            <h2 class="article-title">{{ object.type }} Issue in Room {{ object.room }}</h2>
-            <p class="article-content">{{ object.details }}</p>
+<div class="container mt-5">
+    <h1 class="text-dark mb-4">IT Issue Details</h1>
+
+    <!-- Issue Details Section -->
+    <div class="border rounded p-4 bg-white shadow-sm">
+        <!-- Issue Metadata -->
+        <div class="mb-3">
+            <h2 class="text-dark mb-2">{{ object.type }} Issue in Room {{ object.room }}</h2>
+            <p class="mb-1">
+                <strong>Submitted By:</strong> {{ issue.author.username }}
+            </p>
+            <p class="mb-1">
+                <strong>Date Submitted:</strong> {{ object.date_submitted|date:"F j, Y, g:i a" }}
+            </p>
+            <p>
+                <strong>Status:</strong> 
+                {% if object.urgent %}
+                    <span class="text-danger fw-bold">Urgent</span>
+                {% else %}
+                    <span class="text-success fw-bold">Not Urgent</span>
+                {% endif %}
+            </p>
         </div>
-    </article>
 
-</body>
-</html>
+        <!-- Issue Description -->
+        <div class="mb-4">
+            <h5 class="text-secondary">Details</h5>
+            <p>{{ object.details }}</p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div>
+            <a href="{% url 'itreporting:issue-update' object.id %}" class="btn btn-primary me-2">
+                Edit Issue
+            </a>
+            <a href="{% url 'itreporting:issue-delete' object.id %}" class="btn btn-danger">
+                Delete Issue
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

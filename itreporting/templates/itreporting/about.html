@@ -1,19 +1,43 @@
 {% extends "itreporting/base.html" %}
 
 {% block content %}
-    <div class="container mt-5">
-        <h1>About Us</h1>
-        <p class="lead">Learn more about our IT services and mission.</p>
+<title>About Us</title>
 
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title">Our Mission</h5>
-                <p class="card-text">We strive to provide high-quality technical support and resources to all students and staff.</p>
-            </div>
+<div class="container mt-5">
+    <h1 class="text-dark mb-4">About Us</h1>
+
+    <!-- About Us Section -->
+    <div class="border rounded p-4 bg-white shadow-sm">
+        <!-- Mission Statement -->
+        <div class="mb-4">
+            <h2 class="text-dark mb-3">Our Mission</h2>
+            <p class="text-muted">
+                We strive to provide high-quality technical support and resources to all students and staff, ensuring smooth and effective IT services across the campus.
+            </p>
         </div>
 
-        <div class="alert alert-info" role="alert">
-            Stay updated with our latest IT services and resources!
+        <!-- Additional Information -->
+        <div class="mb-4">
+            <h5 class="text-secondary">Who We Are</h5>
+            <p>
+                Our team consists of dedicated IT professionals who are committed to helping you solve technical challenges. We believe in delivering prompt, reliable, and efficient solutions to improve your experience.
+            </p>
+        </div>
+
+        <!-- Alert or Important Message -->
+        <div class="alert alert-info">
+            <strong>Stay Updated:</strong> Follow our latest IT services and updates to make the most of our resources.
+        </div>
+
+        <!-- Action Section -->
+        <div>
+            <a href="{% url 'itreporting:contact' %}" class="btn btn-primary me-2">
+                Contact Us
+            </a>
+            <a href="{% url 'itreporting:issue-create' %}" class="btn btn-secondary">
+                Report an Issue
+            </a>
         </div>
     </div>
+</div>
 {% endblock %}

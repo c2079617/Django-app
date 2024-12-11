@@ -10,7 +10,6 @@ urlpatterns = [
     path('', views.home, name='home'),                  # Refers to the itreporting home view
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
-    path('reportus/', views.reportus, name='reportus'),
     path('register/', users_views.register, name='register'),  
     path('profile/', users_views.profile, name='profile'),  
     path('report/', PostListView.as_view(), name = 'report'),
