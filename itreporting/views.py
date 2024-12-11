@@ -4,7 +4,6 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.urls import reverse_lazy
 from .models import Issue 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.views.generic.edit import DeleteView
 import requests
 
 def home(request):
@@ -14,14 +13,15 @@ def home(request):
     api_key = '053ef24e299f9acb9b9fb5e27f16ef88'
 
     for city in cities:
-        city_weather = requests.get(url.format(city[0], city[1], api_key)).json() # Request the API data and convert the JSON to Python data types
+        city_weather = requests.get(url.format(city[0], city[1], api_key)).json()  # Request the API data and convert the JSON to Python data types
 
-    weather = {
-        'city': city_weather['name'] + ', ' + city_weather['sys']['country'],
-        'temperature': city_weather['main']['temp'],
-        'description': city_weather['weather'][0]['description']
-    }   
-    weather_data.append(weather) # Add the data for the current city into our list
+        weather = {
+            'city': city_weather['name'] + ', ' + city_weather['sys']['country'],
+            'temperature': city_weather['main']['temp'],
+            'description': city_weather['weather'][0]['description']
+        }
+        weather_data.append(weather)  # Add the data for the current city into our list
+
     return render(request, 'itreporting/home.html', {'title': 'Homepage', 'weather_data': weather_data})
 
 def about(request):
@@ -53,14 +53,9 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     fields = ['type', 'room', 'urgent', 'details']
     
     def form_valid(self, form):
-
         form.instance.author = self.request.user
         return super().form_valid(form)
-    
-class PostUpdateView(LoginRequiredMixin, UpdateView):
-    model = Issue
-    fields = ['type', 'room', 'details']
-    
+
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Issue
     fields = ['type', 'room', 'details']
@@ -68,10 +63,6 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def test_func(self):
         issue = self.get_object()
         return self.request.user == issue.author
-
-class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    model = Issue
-    success_url = '/report'
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Issue
