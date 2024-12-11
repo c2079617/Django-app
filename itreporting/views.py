@@ -32,9 +32,6 @@ def about(request):
 def contact(request):
     return render(request, 'itreporting/contact.html')
 
-# Assignment Features Page
-def assignment_features(request):
-    return render(request, 'itreporting/assignment_features.html')
 
 # Report Page with Issue Data
 def report(request):
