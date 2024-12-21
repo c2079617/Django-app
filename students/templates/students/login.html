@@ -5,13 +5,13 @@
 <title>Login</title>
 
 <div class="container mt-5">
-    <h1 class="text-dark mb-4">User IT Services - Login</h1>
+    <h1 class="text-dark mb-4">Student IT Services - Login</h1>
 
     <div class="border rounded p-4 bg-white shadow-sm">
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="mb-4 text-secondary">Login to User Account</legend>
+                <legend class="mb-4 text-secondary">Login to Student Account</legend>
                 {{ form|crispy }}
             </fieldset>
 

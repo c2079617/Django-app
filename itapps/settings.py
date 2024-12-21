@@ -71,7 +71,6 @@ TEMPLATES = [
         },
     },
 ]
-
 WSGI_APPLICATION = 'itapps.wsgi.application'
 
 # Database
@@ -124,13 +123,12 @@ STORAGES = {
 STATIC_URL = f'https://{AZURE_SA_NAME}.blob.core.windows.net/static/'
 MEDIA_URL = f'https://{AZURE_SA_NAME}.blob.core.windows.net/media/'
 
-# Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Crispy forms
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap4'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-# Login settings
 LOGIN_REDIRECT_URL = 'itreporting:home'
 LOGIN_URL = 'login'
+
+NEWS_API_KEY = '303cbe99d8634e23aa430e2a67eef806'

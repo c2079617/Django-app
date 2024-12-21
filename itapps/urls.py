@@ -27,6 +27,11 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'),name='logout'),
     path('register/', auth_views.LoginView.as_view(template_name='users/register.html'),name='register'),
     path('profile/', auth_views.LoginView.as_view(template_name='users/profile.html'),name='profile'),
+    path('studentslogin/', auth_views.LoginView.as_view(template_name='students/login.html'),name='studentslogin'),
+    path('studentslogout/', auth_views.LogoutView.as_view(template_name='students/logout.html'),name='studentslogout'),
+    path('studentsregister/', auth_views.LoginView.as_view(template_name='students/register.html'),name='studentsregister'),
+    path('studentsprofile/', auth_views.LoginView.as_view(template_name='students/profile.html'),name='studentsprofile'),
 ]
+
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

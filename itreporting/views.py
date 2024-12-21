@@ -13,20 +13,25 @@ def home(request):
     api_key = '053ef24e299f9acb9b9fb5e27f16ef88'  # Use your OpenWeatherMap API key
 
     for city in cities:
-        city_weather = requests.get(url.format(city[0], city[1], api_key)).json()
-
-        weather = {
-            'city': f"{city_weather['name']}, {city_weather['sys']['country']}",
-            'temperature': city_weather['main']['temp'],
-            'description': city_weather['weather'][0]['description']
-        }
-        weather_data.append(weather)
+        try:
+            response = requests.get(url.format(city[0], city[1], api_key))
+            response.raise_for_status()
+            city_weather = response.json()
+            weather = {
+                'city': f"{city_weather.get('name', 'Unknown')}, {city_weather.get('sys', {}).get('country', 'Unknown')}",
+                'temperature': city_weather.get('main', {}).get('temp', 'N/A'),
+                'description': city_weather.get('weather', [{}])[0].get('description', 'N/A'),
+            }
+            weather_data.append(weather)
+        except requests.exceptions.RequestException as e:
+            print(f"Error fetching weather data: {e}")
 
     return render(request, 'itreporting/home.html', {'title': 'Homepage', 'weather_data': weather_data})
 
 # About Page
 def about(request):
     return render(request, 'itreporting/about.html')
+
 
 # Contact Page
 def contact(request):
@@ -38,6 +43,7 @@ def report(request):
     daily_report = {'issues': Issue.objects.all(), 'title': 'Issues Reported'}
     return render(request, 'itreporting/report.html', daily_report)
 
+
 # List View for Issues
 class PostListView(ListView):
     model = Issue
@@ -46,10 +52,12 @@ class PostListView(ListView):
     context_object_name = 'issues'
     paginate_by = 4
 
+
 # Detail View for an Issue
 class PostDetailView(DetailView):
     model = Issue
     template_name = 'itreporting/issue_detail.html'
+
 
 # Create View for Issues
 class PostCreateView(LoginRequiredMixin, CreateView):
@@ -60,6 +68,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+
 # Update View for Issues
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Issue
@@ -68,6 +77,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def test_func(self):
         issue = self.get_object()
         return self.request.user == issue.author
+
 
 # Delete View for Issues
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):

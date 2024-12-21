@@ -2,7 +2,21 @@
 
 {% block content %}
     <h1>Welcome to the homepage</h1>
-    <p>Explore the latest updates and weather details below.</p>
+    <p>Explore the latest updates, weather details, and news below.</p>
+
+    <!-- News Section -->
+    <div class="content-section">
+        <h2>Latest News</h2>
+        <ul class="list-group">
+            {% for article in articles %}
+                <li class="list-group-item">
+                    <h5>{{ article.title }}</h5>
+                    <p>{{ article.description }}</p>
+                    <a href="{{ article.url }}" target="_blank">Read more</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
 
 {% block sidebar %}

@@ -15,7 +15,7 @@ def register(request):
             messages.warning(request, 'Unable to create account.')
     else:
         form = UserRegisterForm()
-    return render(request, 'users/register.html', {'form': form, 'title': 'Student Registration'})
+    return render(request, 'users/register.html', {'form': form, 'title': 'Registration'})
 
 @login_required
 def profile(request):

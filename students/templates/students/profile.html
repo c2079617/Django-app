@@ -2,10 +2,10 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<title>User Profile</title>
+<title>Student Profile</title>
 
 <div class="container mt-5">
-    <h1 class="text-dark mb-4">User IT Services - Profile Details</h1>
+    <h1 class="text-dark mb-4">Student IT Services - Profile Details</h1>
 
     <div class="border rounded p-4 bg-white shadow-sm">
         <!-- Profile Information Section -->
@@ -20,6 +20,7 @@
             <div class="media-body ml-4">
                 <h2 class="account-heading">{{ user.first_name }} {{ user.last_name }}</h2>
                 <p class="text-secondary mb-1"><strong>Username:</strong> {{ user.username }}</p>
+                <p class="text-secondary mb-1"><strong>Email:</strong> {{ student_id }}</p>
                 <p class="text-secondary mb-1"><strong>Email:</strong> {{ user.email }}</p>
             </div>
         </div>

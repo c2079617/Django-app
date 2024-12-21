@@ -21,4 +21,3 @@ class Issue(models.Model):
 
     def get_absolute_url(self):
         return reverse('itreporting:issue-detail', kwargs={'pk': self.pk})
-    
