@@ -57,7 +57,14 @@ def home(request):
 
 # About Page
 def about(request):
-    return render(request, 'itreporting/about.html')
+
+    context = {
+        'google_maps_api_key': 'AIzaSyCPDLwe-PbX5TH_LDA9KC9nELLycZj8ZB4',
+        'latitude': 53.3787,  # Example coordinates (London)
+        'longitude': -1.4652
+    }
+
+    return render(request, 'itreporting/about.html', context)
 
 
 # Contact Page

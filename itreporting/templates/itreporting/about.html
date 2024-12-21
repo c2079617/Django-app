@@ -1,8 +1,8 @@
 {% extends "itreporting/base.html" %}
 
-{% block content %}
-<title>About Us</title>
+{% block title %}About Us{% endblock %}
 
+{% block content %}
 <div class="container mt-5">
     <h1 class="text-dark mb-4">About Us</h1>
 
@@ -40,4 +40,31 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block sidebar %}
+<h1>Our Location</h1>
+<div id="map" style="height: 250px; width: 100%;"></div> <!-- Adjusted height -->
+
+<script>
+  function initMap() {
+    // Set the map's center to the passed latitude and longitude
+    var location = { lat: {{ latitude }}, lng: {{ longitude }} };
+
+    // Create a new map centered at the location
+    var map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 12,
+      center: location,
+    });
+
+    // Add a marker at the location
+    var marker = new google.maps.Marker({
+      position: location,
+      map: map,
+    });
+  }
+</script>
+
+<!-- Load the Google Maps API JavaScript, passing the API Key -->
+<script src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&callback=initMap" async defer></script>
 {% endblock %}
