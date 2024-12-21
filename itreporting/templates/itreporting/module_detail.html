@@ -1,0 +1,15 @@
+{% extends "itreporting/base.html" %}
+{% block content %}
+
+<h1>{{ module.name }}</h1>
+<p>{{ module.description }}</p>
+<p>Credits: {{ module.credit }}</p>
+<p>Category: {{ module.category }}</p>
+<p>{% if module.availability %}
+    Open
+{% else %}
+    Closed
+{% endif %}</p>
+
+
+{% endblock %}

@@ -1,20 +1,22 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from .models import Issue
+from .models import Issue, Module, Student
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 import requests
+from django.contrib.auth.decorators import login_required
 
-# Home View with Weather API integration
+# Home View with Weather and News API integration
 def home(request):
-    url = 'https://api.openweathermap.org/data/2.5/weather?q={},{}&units=metric&appid={}'
+    # Weather API integration
+    weather_url = 'https://api.openweathermap.org/data/2.5/weather?q={},{}&units=metric&appid={}'
     cities = [('Sheffield', 'UK'), ('Melaka', 'Malaysia'), ('Bandung', 'Indonesia')]
     weather_data = []
-    api_key = '053ef24e299f9acb9b9fb5e27f16ef88'  # Use your OpenWeatherMap API key
+    weather_api_key = '053ef24e299f9acb9b9fb5e27f16ef88'  # OpenWeatherMap API key
 
     for city in cities:
         try:
-            response = requests.get(url.format(city[0], city[1], api_key))
+            response = requests.get(weather_url.format(city[0], city[1], weather_api_key))
             response.raise_for_status()
             city_weather = response.json()
             weather = {
@@ -26,7 +28,32 @@ def home(request):
         except requests.exceptions.RequestException as e:
             print(f"Error fetching weather data: {e}")
 
-    return render(request, 'itreporting/home.html', {'title': 'Homepage', 'weather_data': weather_data})
+    # NewsAPI integration
+    news_api_key = '303cbe99d8634e23aa430e2a67eef806'  # NewsAPI key
+    news_url = 'https://newsapi.org/v2/top-headlines'
+    news_params = {
+        'apiKey': news_api_key,
+        'country': 'us',  # or any other country
+        'category': 'technology',  # You can change to another category if needed
+    }
+
+    try:
+        news_response = requests.get(news_url, params=news_params)
+        news_response.raise_for_status()
+        news_data = news_response.json()
+        articles = news_data.get("articles", [])
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching news data: {e}")
+        articles = []
+
+    context = {
+        'title': 'Homepage',
+        'weather_data': weather_data,
+        'articles': articles,  # Add news articles to context
+    }
+
+    return render(request, 'itreporting/home.html', context)
+
 
 # About Page
 def about(request):
@@ -87,3 +114,28 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         issue = self.get_object()
         return self.request.user == issue.author
+    
+
+def modules(request):
+    modules = Module.objects.all()
+    return render(request, 'itreporting/modules.html', {'modules': modules})
+
+def module_detail(request, module_id):
+    module = get_object_or_404(Module, id=module_id)
+    return render(request, 'itreporting/module_detail.html', {'module': module})
+
+@login_required
+def register_module(request, module_id):
+    module = get_object_or_404(Module, id=module_id)
+    student = request.user.student
+    if module.availability and module not in student.registered_modules.all():
+        student.registered_modules.add(module)
+    return redirect('itreporting/module_detail', module_id=module_id)
+
+@login_required
+def unregister_module(request, module_id):
+    module = get_object_or_404(Module, id=module_id)
+    student = request.user.student
+    if module in student.registered_modules.all():
+        student.registered_modules.remove(module)
+    return redirect('itreporting/module_detail', module_id=module_id)
