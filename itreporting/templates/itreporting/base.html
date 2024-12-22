@@ -39,10 +39,11 @@
                             <a class="nav-link" href="{% url 'itreporting:contact' %}">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'itreporting:report' %}">Report</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="{% url 'itreporting:modules' %}">Modules</a> <!-- Link to Modules -->
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'itreporting:report' %}">Report</a>
                         </li>
 
                         {% if user.is_authenticated %}

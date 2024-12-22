@@ -1,15 +1,38 @@
 {% extends "itreporting/base.html" %}
+
+{% block title %}{{ module.name }}{% endblock %}
+
 {% block content %}
+<div class="container mt-5">
+    <div class="card shadow-lg border-0">
+        <div class="card-body">
+            <h1 class="card-title text-primary mb-4">{{ module.name }}</h1>
 
-<h1>{{ module.name }}</h1>
-<p>{{ module.description }}</p>
-<p>Credits: {{ module.credit }}</p>
-<p>Category: {{ module.category }}</p>
-<p>{% if module.availability %}
-    Open
-{% else %}
-    Closed
-{% endif %}</p>
+            <!-- Description -->
+            <p class="card-text">
+                <strong>Description:</strong> {{ module.description }}
+            </p>
 
+            <!-- Credits -->
+            <p class="card-text">
+                <strong>Credits:</strong> {{ module.credit }}
+            </p>
 
+            <!-- Category -->
+            <p class="card-text">
+                <strong>Category:</strong> {{ module.category }}
+            </p>
+
+            <!-- Availability -->
+            <p class="card-text">
+                <strong>Availability:</strong> 
+                {% if module.availability %}
+                    <span class="badge bg-success">Open</span>
+                {% else %}
+                    <span class="badge bg-danger">Closed</span>
+                {% endif %}
+            </p>
+        </div>
+    </div>
+</div>
 {% endblock %}

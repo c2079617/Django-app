@@ -4,34 +4,33 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h1 class="text-dark mb-4">About Us</h1>
+    <h1 class="text-dark mb-4 text-center">About Us</h1>
 
-    <!-- About Us Section -->
     <div class="border rounded p-4 bg-white shadow-sm">
-        <!-- Mission Statement -->
-        <div class="mb-4">
+
+        <div class="mb-5">
             <h2 class="text-dark mb-3">Our Mission</h2>
             <p class="text-muted">
                 We strive to provide high-quality technical support and resources to all students and staff, ensuring smooth and effective IT services across the campus.
             </p>
         </div>
 
-        <!-- Additional Information -->
-        <div class="mb-4">
-            <h5 class="text-secondary">Who We Are</h5>
-            <p>
-                Our team consists of dedicated IT professionals who are committed to helping you solve technical challenges. We believe in delivering prompt, reliable, and efficient solutions to improve your experience.
+        <div class="mb-5">
+            <h2 class="text-dark mb-3">Who We Are</h2>
+            <p class="text-muted">
+                Our team consists of dedicated IT professionals who are committed to helping you solve technical challenges. 
+                We believe in delivering prompt, reliable, and efficient solutions to improve your experience.
             </p>
         </div>
 
         <!-- Alert or Important Message -->
-        <div class="alert alert-info">
+        <div class="alert alert-info mb-5">
             <strong>Stay Updated:</strong> Follow our latest IT services and updates to make the most of our resources.
         </div>
 
         <!-- Action Section -->
-        <div>
-            <a href="{% url 'itreporting:contact' %}" class="btn btn-primary me-2">
+        <div class="d-flex justify-content-center">
+            <a href="{% url 'itreporting:contact' %}" class="btn btn-primary me-3">
                 Contact Us
             </a>
             <a href="{% url 'itreporting:issue-create' %}" class="btn btn-secondary">
@@ -43,28 +42,26 @@
 {% endblock %}
 
 {% block sidebar %}
-<h1>Our Location</h1>
-<div id="map" style="height: 250px; width: 100%;"></div> <!-- Adjusted height -->
+<div class="mt-5">
+    <h2 class="text-dark mb-4">Our Location</h2>
+    <div id="map" class="rounded shadow-sm" style="height: 300px; width: 100%;"></div>
 
-<script>
-  function initMap() {
-    // Set the map's center to the passed latitude and longitude
-    var location = { lat: {{ latitude }}, lng: {{ longitude }} };
+    <script>
+      function initMap() {
+        var location = { lat: {{ latitude }}, lng: {{ longitude }} };
 
-    // Create a new map centered at the location
-    var map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 12,
-      center: location,
-    });
+        var map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 12,
+          center: location,
+        });
 
-    // Add a marker at the location
-    var marker = new google.maps.Marker({
-      position: location,
-      map: map,
-    });
-  }
-</script>
+        var marker = new google.maps.Marker({
+          position: location,
+          map: map,
+        });
+      }
+    </script>
 
-<!-- Load the Google Maps API JavaScript, passing the API Key -->
-<script src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&callback=initMap" async defer></script>
+</div>
 {% endblock %}

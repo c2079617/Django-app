@@ -1,33 +1,40 @@
 {% extends "itreporting/base.html" %}
 
 {% block content %}
-    <h1>Welcome to the homepage</h1>
-    <p>Explore the latest updates, weather details, and news below.</p>
+    <div class="container mt-5">
+        <h1 class="display-4 text-primary">Homepage</h1>
+        <p class="lead text-muted">Explore the latest updates, weather details, and news below.</p>
 
-    <!-- News Section -->
-    <div class="content-section">
-        <h2>Latest News</h2>
-        <ul class="list-group">
-            {% for article in articles %}
-                <li class="list-group-item">
-                    <h5>{{ article.title }}</h5>
-                    <p>{{ article.description }}</p>
-                    <a href="{{ article.url }}" target="_blank">Read more</a>
-                </li>
-            {% endfor %}
-        </ul>
+        <!-- News Section -->
+        <div class="content-section mt-4">
+            <h2 class="h3 text-info">Latest News</h2>
+            <div class="list-group">
+                {% for article in articles %}
+                    <a href="{{ article.url }}" target="_blank" class="list-group-item list-group-item-action">
+                        <h5 class="mb-1">{{ article.title }}</h5>
+                        <p class="mb-1 text-muted">{{ article.description }}</p>
+                        <small>Read more</small>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 {% endblock %}
 
 {% block sidebar %}
-    <div class="content-section">
-        <h3>Current Weathers</h3>
-        <ul class="list-group">
-            {% for weather in weather_data %}
-                <li class="list-group-item list-group-item-light">
-                    {{ weather.city }}: {{ weather.description }}, {{ weather.temperature }}&deg;C
-                </li>
-            {% endfor %}
-        </ul>
+    <div class="container mt-4">
+        <div class="content-section">
+            <h3 class="h4 text-success">Current Weather</h3>
+            <ul class="list-group">
+                {% for weather in weather_data %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>{{ weather.city }}</span>
+                        <span class="badge badge-primary badge-pill">
+                            {{ weather.description }} - {{ weather.temperature }}&deg;C
+                        </span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 {% endblock %}
