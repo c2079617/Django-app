@@ -132,3 +132,9 @@ LOGIN_REDIRECT_URL = 'itreporting:home'
 LOGIN_URL = 'login'
 
 NEWS_API_KEY = '303cbe99d8634e23aa430e2a67eef806'
+
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = '867392c510d445'
+EMAIL_HOST_PASSWORD = '4a2b76aeb130c8'
+EMAIL_PORT = '2525' 
+EMAIL_USE_TLS = True  

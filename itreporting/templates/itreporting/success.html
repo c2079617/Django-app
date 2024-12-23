@@ -1,0 +1,15 @@
+{% extends "itreporting/base.html" %}
+{% block content %}
+<title>Email Success</title>
+
+<div class="container mt-5">
+    <h1 class="text-dark mb-4">Email Sent Successfully</h1>
+
+    <div class="border rounded p-4 bg-white shadow-sm">
+        <p class="lead text-secondary">
+            Thanks for the email, we will be in touch.
+        </p>
+        <a href="{% url 'itreporting:home' %}" class="btn btn-primary">Go back to Homepage</a>
+    </div>
+</div>
+{% endblock %}

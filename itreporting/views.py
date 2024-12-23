@@ -1,10 +1,12 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .models import Issue, Module, Student
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 import requests
 from django.contrib.auth.decorators import login_required
+from .forms import ContactForm
+from django.core.mail import EmailMessage
 
 # Home View with Weather and News API integration
 def home(request):
@@ -146,3 +148,53 @@ def unregister_module(request, module_id):
     if module in student.registered_modules.all():
         student.registered_modules.remove(module)
     return redirect('itreporting/module_detail', module_id=module_id)
+
+# Contact Page with form handling
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # Extract cleaned data from the form
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            phone = form.cleaned_data['phone']
+            subject = form.cleaned_data['subject']
+            room = form.cleaned_data['room']
+            message = form.cleaned_data['message']
+
+            # Construct the email body
+            email_body = f"""
+            Name: {name}
+            Email: {email}
+            Phone: {phone}
+            Subject: {subject}
+            Room: {room}
+
+            Message:
+            {message}
+            """
+
+            # Sending the email
+            email_message = EmailMessage(
+                f'Contact Form Submission from {name}',  # Subject
+                email_body,  # Message body
+                email, 
+                ['DjangoTestmail@gmail.com'],  # Recipient's email address
+                reply_to=[email]  # Reply-to email address
+            )
+
+            try:
+                email_message.send(fail_silently=False)
+                return redirect('itreporting:success')  # Redirect to success page after sending
+            except Exception as e:
+                print(f"Error sending email: {e}")
+                return HttpResponse("Error sending email. Please try again.")
+    else:
+        form = ContactForm()
+
+    return render(request, 'itreporting/contact.html', {'form': form})
+
+
+# Success Page
+def success(request):
+    return render(request, 'itreporting/success.html')
