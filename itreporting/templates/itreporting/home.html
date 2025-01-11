@@ -2,14 +2,14 @@
 
 {% block content %}
     <div class="container mt-5">
-        <h1 class="display-4 text-primary">Homepage</h1>
+        <h1 class="display-4 text-primary">HomePage</h1>
         <p class="lead text-muted">Explore the latest updates, weather details, and news below.</p>
 
         <!-- News Section -->
         <div class="content-section mt-4">
             <h2 class="h3 text-info">Latest News</h2>
             <div class="list-group">
-                {% for article in articles %}
+                {% for article in articles|slice:":5" %}     
                     <a href="{{ article.url }}" target="_blank" class="list-group-item list-group-item-action">
                         <h5 class="mb-1">{{ article.title }}</h5>
                         <p class="mb-1 text-muted">{{ article.description }}</p>

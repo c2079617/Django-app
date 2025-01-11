@@ -14,7 +14,7 @@ def home(request):
     weather_url = 'https://api.openweathermap.org/data/2.5/weather?q={},{}&units=metric&appid={}'
     cities = [('Sheffield', 'UK'), ('Melaka', 'Malaysia'), ('Bandung', 'Indonesia')]
     weather_data = []
-    weather_api_key = '053ef24e299f9acb9b9fb5e27f16ef88'  # OpenWeatherMap API key
+    weather_api_key = '053ef24e299f9acb9b9fb5e27f16ef88'  
 
     for city in cities:
         try:
@@ -31,12 +31,12 @@ def home(request):
             print(f"Error fetching weather data: {e}")
 
     # NewsAPI integration
-    news_api_key = '303cbe99d8634e23aa430e2a67eef806'  # NewsAPI key
+    news_api_key = '303cbe99d8634e23aa430e2a67eef806' 
     news_url = 'https://newsapi.org/v2/top-headlines'
     news_params = {
         'apiKey': news_api_key,
-        'country': 'us',  # or any other country
-        'category': 'technology',  # You can change to another category if needed
+        'country': 'us',  
+        'category': 'technology',  
     }
 
     try:
@@ -51,7 +51,7 @@ def home(request):
     context = {
         'title': 'Homepage',
         'weather_data': weather_data,
-        'articles': articles,  # Add news articles to context
+        'articles': articles, 
     }
 
     return render(request, 'itreporting/home.html', context)
@@ -62,7 +62,7 @@ def about(request):
 
     context = {
         'google_maps_api_key': 'AIzaSyCPDLwe-PbX5TH_LDA9KC9nELLycZj8ZB4',
-        'latitude': 53.3787,  # Example coordinates (London)
+        'latitude': 53.3787, 
         'longitude': -1.4652
     }
 
