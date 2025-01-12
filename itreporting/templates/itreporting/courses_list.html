@@ -1,0 +1,26 @@
+{% extends "itreporting/base.html" %}
+{% block content %}
+<title>Available Modules</title>
+
+<div class="container mt-5">
+    <h1 class="text-dark mb-4">Available Modules</h1>
+
+    <div class="row">
+        {% for course in courses %}
+            <div class="col-md-4 mb-4">
+                <div class="border rounded p-4 bg-white shadow-sm">
+    
+                    <h3 class="text-dark mb-3">
+                        <a href="{% url 'itreporting:course_detail' course.pk %}" class="text-decoration-none">{{ course.title }}</a>
+                    </h3>
+                    
+                    <p class="text-secondary">{{ course.description|truncatewords:20 }}</p>
+
+                    <a href="{% url 'itreporting:course_detail' course.pk %}" class="btn btn-outline-primary btn-sm">View Course</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

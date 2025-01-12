@@ -39,16 +39,18 @@
                             <a class="nav-link" href="{% url 'itreporting:contact' %}">Contact-us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'itreporting:modules' %}">Modules</a> <!-- Link to Modules -->
-                        </li>
+                            <a class="nav-link" href="{% url 'itreporting:courses_list' %}">Courses</a>                        </li>
                         
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'itreporting:report' %}">Report</a>
+                            <a class="nav-link" href="{% url 'itreporting:report' %}">Issues</a>
                         </li>
 
                         {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'itreporting:issue-create' %}">Report New Issue</a>
+                            <a class="nav-link" href="{% url 'itreporting:issue-create' %}">New Issue</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'itreporting:dashboard' %}">My Registrations</a>
                         </li>
                         {% endif %}
                     </ul>
@@ -79,12 +81,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'register' %}">User Register</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'studentslogin' %}">Student Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'studentsregister' %}">Student Register</a>
-                        </li>
                         {% endif %}
                     </ul>
                 </div>
@@ -107,7 +103,7 @@
                             <a class="nav-link" href="{% url 'itreporting:report' %}">Latest Issues Reported</a>
                         </li>
                         <li class="list-group-item list-group-item-light">
-                            <a class="nav-link" href="{% url 'itreporting:modules' %}">Modules</a>
+                            <a class="nav-link" href="{% url 'itreporting:courses_list' %}">Courses</a>
                         <li class="list-group-item list-group-item-light">
                             <a class="nav-link" href="{% url 'register' %}">User Register</a>
                         </li>

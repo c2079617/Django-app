@@ -1,0 +1,26 @@
+{% extends "itreporting/base.html" %}
+{% block content %}
+<title>Your Enrollments</title>
+
+<div class="container mt-5">
+    <h1 class="text-dark mb-4">Your Enrollments</h1>
+
+    <div class="row">
+        {% for enrollment in enrollments %}
+            <div class="col-md-4 mb-4">
+                <div class="border rounded p-4 bg-white shadow-sm">
+                    <h4 class="text-dark mb-2">Course: {{ enrollment.course.title }}</h4>
+                    <p><strong>Status:</strong> {{ enrollment.status }}</p>
+                    <p><strong>Enrolled At:</strong> {{ enrollment.enrolled_at|date:"F j, Y, g:i a" }}</p>
+
+                    <a href="{% url 'itreporting:course_detail' enrollment.course.pk %}" class="btn btn-outline-primary btn-sm">View Course</a>
+                    
+                    <!-- Unenroll button -->
+                    <a href="{% url 'itreporting:unenroll_course' enrollment.course.pk %}" class="btn btn-outline-danger btn-sm mt-2">Unenroll</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

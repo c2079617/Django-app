@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'students.apps.StudentsConfig',
     'crispy_forms',
     'crispy_bootstrap4',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
